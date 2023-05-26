@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tijd sinds de operatie</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <style>
+    body {
+      background-color: #36393F;
+      color: #FFFFFF;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+  .container {
+    text-align: center;
+    margin-top: 100px;
+  }
+
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+  }
+
+  #timer {
+    font-size: 30px;
+    margin-top: 20px;
+    color: #7289DA;
+  }
+
+  #timer strong {
+    color: #FFFFFF;
+  }
+
+  .message {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+ </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Tijd sinds de operatie</h1>
+    <div id="timer"></div>
+    <br>
+    <div class="message">
+      Goed bezig Irma!
+    </div>
+  </div>
+  <script>
+window.onload = function() {
+  var targetDate = new Date('2023-05-19T09:13:00');
+  setInterval(updateTimer, 1000);
+
+  function updateTimer() {
+    var currentDate = new Date();
+    var timeDifference = currentDate - targetDate;
+
+    var seconds = Math.floor(timeDifference / 1000) % 60;
+    var minutes = Math.floor(timeDifference / (1000 * 60)) % 60;
+    var hours = Math.floor(timeDifference / (1000 * 60 * 60)) % 24;
+    var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24)) % 7;
+    var weeks = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 7));
+
+    var timerElement = document.getElementById('timer');
+    timerElement.innerHTML = "Het is alweer: " + weeks + " weken, " + days + " dagen, " + hours + " uren, " + minutes + " minuten, " + seconds + " secondes sinds je operatie geweest";
+  }
+};
+</script>
+</body>
+</html>
